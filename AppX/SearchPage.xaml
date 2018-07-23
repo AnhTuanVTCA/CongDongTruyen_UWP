@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="AppX.SearchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#135c15">
+            <local:FragmentTop x:Name="fragmentTop"></local:FragmentTop>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="#b8e0b8">
+            <SplitView IsPaneOpen="False"
+                       PaneBackground="#2da830"
+                       Name="svLeft"
+                       OpenPaneLength="400"
+                       DisplayMode="Inline">
+                <SplitView.Pane>
+                    <local:FragmentLeft Name="fragmentLeft"></local:FragmentLeft>
+                </SplitView.Pane>
+                <SplitView.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="11*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <local:FragmentLoad x:Name="fragmentLoad" Grid.RowSpan="2" Canvas.ZIndex="1" Visibility="Collapsed"></local:FragmentLoad>
+                        <TextBlock Name="tblName"
+                                   Grid.Row="0"
+                                       FontWeight="Bold"
+                                       FontSize="40"
+                                       Foreground="#135c15"
+                                       Margin="20,8,0,8"
+                                       Canvas.ZIndex="0"
+                                   Text="TÌM KIẾM"></TextBlock>
+                        <local:FragmentGridView x:Name="fragmentGridView" Grid.Row="1" Canvas.ZIndex="0" ></local:FragmentGridView>
+                    </Grid>
+                </SplitView.Content>
+            </SplitView>
+
+        </Grid>
+
+    </Grid>
+</Page>

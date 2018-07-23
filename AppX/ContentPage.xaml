@@ -1,0 +1,76 @@
+﻿<Page
+    x:Class="AppX.ContentPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#135c15">
+            <local:FragmentTop x:Name="fragmentTop"></local:FragmentTop>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="#b8e0b8">
+            <SplitView IsPaneOpen="False"
+                       PaneBackground="#2da830"
+                       Name="svLeft"
+                       OpenPaneLength="400"
+                       DisplayMode="Inline">
+                <SplitView.Pane>
+                    <local:FragmentLeft Name="fragmentLeft"></local:FragmentLeft>
+                </SplitView.Pane>
+                <SplitView.Content>
+                    <ScrollViewer Name="scrollviewer">
+                        <StackPanel Orientation="Vertical" CornerRadius="8" Margin="8" Padding="8" Background="#fff">
+                            <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                                <Button Content="-"
+                                Name="zoomout"
+                                Click="zoomout_Click"></Button>
+                                <Button Content="+"
+                                Margin="16,0,0,0"
+                                Name="zoomin"
+                                Click="zoomin_Click"></Button>
+                            </StackPanel>
+                            <TextBlock Name="tblTitle"
+                                       Foreground="#135c15"
+                                       FontSize="20"
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Bold"></TextBlock>
+                            <TextBlock Name="tblChapter"
+                                       Foreground="#135c15"
+                                       FontSize="20"
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Bold"></TextBlock>
+                            <TextBlock Name="tblContent"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Stretch"
+                                       TextWrapping="Wrap"
+                                       TextAlignment="Justify"
+                                       Padding="8"></TextBlock>
+                            <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                                <Button Content="Prev"
+                                Name="previous"
+                                Click="previous_Click"></Button>
+                                <Button Content="Next"
+                                Margin="16,0,0,0"
+                                Name="next"
+                                Click="next_Click"></Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </SplitView.Content>
+            </SplitView>
+
+        </Grid>
+    </Grid>
+</Page>
